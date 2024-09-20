@@ -1,6 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Red+Hat+Text:ital,wght@0,300..700;1,300..700&display=swap');
 
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 :root {
+
 --red: hsl(14, 86%, 42%);
 --green: hsl(159, 69%, 38%);
 
@@ -12,7 +19,185 @@
 --rose-900: hsl(14, 65%, 9%);
 }
 
+/* GENERIC */
+
 body {
     font-family: "Red Hat Text";
     background: var(--rose-50);
+}
+
+p {
+    font-size: 16px;
+}
+
+img {
+    width: 100%;
+    height: auto;
+}
+
+ul {
+    list-style: none;
+}
+
+
+/* CLASS ELEMENTS */
+
+/* PRODUCT LIST COMPONENT */
+
+#root {
+    display: grid;
+    grid-template-columns: 1fr 400px;
+    gap: 30px;
+    padding: 30px;
+}
+
+.desserts-container {
+}
+
+.desserts-container .title {
+    margin-bottom: 20px;
+    font-size: 2.3rem;
+}
+
+.desserts-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 30px 20px;
+}
+
+.product-img {
+    position: relative;
+}
+
+.product-img img {
+    border-radius: 6px;
+}
+
+.product-img img.in-cart {
+    border: 2px solid var(--red);
+}
+
+button.add-to-cart {
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    position: absolute;
+    bottom: -13px;
+    right: 50%;
+    transform: translateX(50%);
+    font-size: .9rem;
+    gap: 6px;
+    cursor: pointer;
+
+    font-family: inherit;
+    font-weight: 500;
+    border-radius: 180px;
+    padding: 9px;
+    width: 150px;
+    background: var(--rose-50);
+    border: 1px solid var(--rose-400);
+    transition: all .2s ease-in-out;
+}
+
+button.add-to-cart.in-cart {
+   background: var(--red);
+   color: var(--rose-100); 
+   justify-content: space-between;
+   align-items: center;
+}
+
+button.add-to-cart.in-cart:hover {
+    color: var(--rose-100);
+}
+
+button.add-to-cart.in-cart svg {
+    width: 19px;
+    height: 19px;
+    padding: 3px;
+    border-radius: 180px;
+    border: 1px solid white;
+    transition: background .2s ease-in-out;
+}
+
+button.add-to-cart.in-cart svg:hover {
+    background: var(--rose-100);
+}
+
+button.add-to-cart.in-cart svg:hover path {
+    stroke: var(--red);
+    fill: var(--red);
+}
+
+button.add-to-cart:hover {
+    color: var(--red);
+}
+
+button.add-to-cart img {
+    height: 18px;
+    width: auto;
+}
+
+.product-infos {
+    margin-top: 20px;
+    display: flex;
+    flex-flow: column;
+    gap: 2px;
+}
+
+.product-type {
+    color: var(--rose-500);
+    font-size: 1rem;
+    font-weight: 400;
+}
+
+.product-name {
+    font-size: 1.1rem;
+    font-weight: 500;
+}
+
+.product-price {
+    color: var(--red);
+    font-weight: 500;
+}
+
+.cart {
+    background: white;
+    padding: 15px;
+}
+
+.cart-title {
+    color: var(--red);
+}
+
+.cart-confirmation {
+    display: flex;
+    flex-flow: column;
+    gap: 30px;
+}
+
+.order-total {
+    display: flex;
+    justify-content: space-between;
+}
+
+.order-total p:nth-child(2) {
+    font-size: 1.2rem;
+    font-weight: 800;
+}
+
+.carbon-neutral {
+    background: var(--rose-100);
+    padding: 15px;
+    text-align: center;
+    border-radius: 10px;
+}
+
+button.order-confirmation {
+    font-family: inherit;
+    font-weight: 500;
+    border: 0;
+    border-radius: 150px;
+    background: var(--red);
+    color: var(--rose-50);
+    padding: 13px 0;
 }
