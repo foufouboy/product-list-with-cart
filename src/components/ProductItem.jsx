@@ -4,7 +4,9 @@ import CartIcon from "../assets/images/icon-add-to-cart.svg";
 import PlusIcon from "../assets/images/icon-increment-quantity.svg?react";
 import LessIcon from "../assets/images/icon-decrement-quantity.svg?react";
 
-function ProductItem({inCart = false, item = {}}) {
+function ProductItem({cartActions, item}) {
+
+    const inCartProduct = cartActions.get(item);
 
     return (
         <div className="product-item">
@@ -12,18 +14,22 @@ function ProductItem({inCart = false, item = {}}) {
                 <img 
                 src={item.image.desktop} 
                 alt="Product Image" 
-                className={inCart ? "in-cart" : ""}/>
-                <button className={"add-to-cart" + (inCart ? " in-cart" : "")}>
-                    {inCart ? (
+                className={inCartProduct ? "in-cart" : ""}/>
+                <button 
+                className={"add-to-cart" + (inCartProduct ? " in-cart" : "")}
+                onClick={() => !inCartProduct && cartActions.add(item)}>
+                    {inCartProduct ? (
                         <>
-                            <LessIcon/>
-                            1
-                            <PlusIcon/>
+                            <LessIcon 
+                            onClick={() => {cartActions.remove(item)}}/>
+                            {inCartProduct.quantity}
+                            <PlusIcon
+                            onClick={() => {cartActions.add(item)}}/>
                         </>
                     ) : (
                         <>
-                            <img src={CartIcon} alt="Cart icon"/>
-                            Add to Cart
+                                <img src={CartIcon} alt="Cart icon"/>
+                                Add to Cart
                         </>
                     )}
                 </button>

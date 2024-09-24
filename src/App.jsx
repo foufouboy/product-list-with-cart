@@ -24,36 +24,50 @@ function App() {
     const cartActions = (function() {
 
         function addProduct(product) {
-            if (cart.find(item => item.name === product.name)) {
+            if (getProduct(product)) {
                 setCart(cart.map(item => {
                     item.name === product.name && ++item.quantity;
+                    return item;
                 }));
             } else {
-                setCart([...cart, product]);
+                const newProduct = {
+                    name: product.name,
+                    price: product.price,
+                    quantity: 1,
+                };
+
+                setCart([...cart, newProduct]);
             }
+
+            logState();
         }
 
         function removeProduct(product) {
-            // Si il ne reste plus qu'une quantité du produit
-            // On le retire du panier
-            // Sinon
-            // On enlève une quantité du produit
-
-            if (cart
-                .filter(item => item.name === product.name)
-                .quantity === 1) {
+            if (getProduct(product).quantity <= 1) {
                     setCart(cart.filter(item => item.name !== product.name));
                 }
             else {
                 setCart(cart.map(item => {
                     item.name === product.name && --item.quantity;
+                    return item;
                 }));
             }
+
+            logState();
+        }
+
+        function getProduct(product) {
+            return cart.find(item => item.name === product.name);
+        }
+
+        function logState() {
+            console.log(cart);
         }
 
         return {
             add: addProduct,
             remove: removeProduct,
+            get: getProduct,
         }
     }());
 

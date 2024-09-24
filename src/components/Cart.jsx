@@ -1,8 +1,6 @@
 
 function Cart({cartActions}) {
 
-    console.log(cartActions);
-
     return (
         <div className="cart">
             <h2 className="cart-title">Your Cart (7)</h2>
