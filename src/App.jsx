@@ -56,8 +56,22 @@ function App() {
             logState();
         }
 
+        function removeAllOfProduct(product) {
+            setCart(cart.filter(item => item.name !== product.name));
+        }
+
         function getProduct(product) {
             return cart.find(item => item.name === product.name);
+        }
+
+        function getCart() {
+            return cart;
+        }
+
+        function getTotalPrice() {
+            return cart.reduce((a, item) => {
+                return a + (item.quantity * item.price);
+            }, 0).toFixed(2);
         }
 
         function logState() {
@@ -67,7 +81,10 @@ function App() {
         return {
             add: addProduct,
             remove: removeProduct,
+            removeAll: removeAllOfProduct,
             get: getProduct,
+            getCart: getCart,
+            getTotalPrice: getTotalPrice,
         }
     }());
 

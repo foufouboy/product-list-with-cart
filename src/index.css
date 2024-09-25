@@ -51,9 +51,6 @@ ul {
     padding: 30px;
 }
 
-.desserts-container {
-}
-
 .desserts-container .title {
     margin-bottom: 20px;
     font-size: 2.3rem;
@@ -163,6 +160,8 @@ button.add-to-cart img {
 .cart {
     background: white;
     padding: 15px;
+    border-radius: 10px;
+    height: min-content;
 }
 
 .cart-title {
@@ -172,12 +171,12 @@ button.add-to-cart img {
 .cart-confirmation {
     display: flex;
     flex-flow: column;
-    gap: 30px;
 }
 
 .order-total {
     display: flex;
     justify-content: space-between;
+    margin: 15px 0;
 }
 
 .order-total p:nth-child(2) {
@@ -186,18 +185,108 @@ button.add-to-cart img {
 }
 
 .carbon-neutral {
+    display: flex;
     background: var(--rose-100);
+    justify-content: center;
+    gap: 5px;
     padding: 15px;
     text-align: center;
     border-radius: 10px;
 }
 
+.carbon-neutral p {
+    font-size: .9rem;
+}
+
 button.order-confirmation {
     font-family: inherit;
+    font-size: 1rem;
     font-weight: 500;
     border: 0;
     border-radius: 150px;
     background: var(--red);
     color: var(--rose-50);
-    padding: 13px 0;
+    padding: 15px 0;
+    margin: 25px 0;
+    transition: background .2s ease-in-out;
+    cursor: pointer;
+}
+
+button.order-confirmation:hover {
+    background: hsl(14, 86%, 36%);
+}
+
+.cart-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 0;
+    font-size: .8rem;
+}
+
+.cart-item + hr {
+    background: var(--rose-100);
+    outline: 0;
+    border: 0;
+    height: 1px;
+}
+
+.cart-item .name {
+    font-weight: 500;
+    margin-bottom: 5px;
+}
+
+.cart-item .infos span:nth-child(1) {
+    color: var(--red);
+    font-weight: 500;
+    margin-right: 12px;
+}
+
+.cart-item .infos span:nth-child(2) {
+    color: var(--rose-500);
+    margin-right: 7px;
+}
+
+.cart-item .infos span:nth-child(3) {
+    color: var(--rose-500);
+    font-weight: 500;
+}
+
+button.remove-item {
+    border: 2px solid var(--rose-300);
+    border-radius: 180px;
+    padding: 3px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    background: 0;
+}
+
+button.remove-item svg {
+    fill: var(--rose-300);
+    stroke: var(--rose-300);
+    width: 9px;
+    height: 9px;
+}
+
+button.remove-item:hover {
+    border: 2px solid var(--rose-400);
+}
+
+button.remove-item:hover svg {
+    fill: var(--rose-400);
+    stroke: var(--rose-400);
+}
+
+.empty-cart-container {
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    margin-top: 15px;
+}
+
+.empty-cart-container p {
+    font-size: 15px;
+    color: var(--rose-500);
+    font-weight: 500;
 }
