@@ -70,7 +70,7 @@ ul {
     border-radius: 6px;
 }
 
-.product-img img.in-cart {
+.product-img .in-cart {
     border: 2px solid var(--red);
 }
 
@@ -282,11 +282,125 @@ button.remove-item:hover svg {
     display: flex;
     flex-flow: column;
     align-items: center;
-    margin-top: 15px;
+    margin: 25px 0;
 }
 
 .empty-cart-container p {
     font-size: 15px;
     color: var(--rose-500);
     font-weight: 500;
+}
+
+.modal {
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 2;
+    height: 100%;
+    width: 100%;
+    background: rgba(0, 0, 0, .2);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.confirm-container {
+    display: flex;
+    flex-flow: column;
+    background: white;
+    padding: 30px;
+    border-radius: 10px;
+    width: 500px;
+}
+
+.confirm-icon {
+    width: 33px;
+    margin-bottom: 5px;
+}
+
+.confirm-container p {
+    font-size: 13px;
+}
+
+.confirm-container h2 {
+    font-size: 2rem;
+}
+
+.confirm-container > p {
+    color: var(--rose-500);
+    margin-bottom: 25px;
+}
+
+.order-resume {
+    background: var(--rose-100);
+    margin-bottom: 25px;
+    padding: 0 15px;
+}
+
+.confirm-order-total {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 15px 0;
+}
+
+.confirm-order-total > span:nth-child(2) {
+    font-weight: 700;
+    font-size: 1.2rem;
+}
+
+.order-confirmation.reset {
+    margin: 0;
+}
+
+.confirm-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 25px 0;
+}
+
+.confirm-item-left {
+    display: flex;
+    gap: 12px;
+}
+
+.confirm-item-name {
+    font-weight: 500;
+    margin-bottom: 10px;
+}
+
+.confirm-item-left img {
+    width: 45px;
+    height: auto;
+    border-radius: 10px;
+}
+
+.quantity-and-unit span:nth-child(1) {
+    color: var(--red);
+    margin-right: 10px;
+    font-weight: 500;
+}
+
+.quantity-and-unit span:nth-child(2) {
+    color: var(--rose-500);
+}
+
+.confirm-item-right p {
+    font-weight: 500;
+}
+
+@media screen and (max-width: 800px) {
+    #root {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .modal {
+        align-items: end;
+    }
+    .confirm-container {
+        width: 100%;
+    }
 }

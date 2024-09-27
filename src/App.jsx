@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import Cart from './components/Cart';
 import ProductList from './components/ProductList';
+import ConfirmModal from './components/ConfirmModal';
 
 function App() {
     const [cart, setCart] = useState([
@@ -20,9 +21,12 @@ function App() {
             quantity: 1,
         },
     ]);
+    const [modalOpen, setModalOpen] = useState(false);
 
+    const modalSwitch = () => {
+        setModalOpen(!modalOpen);
+    }
     const cartActions = (function() {
-
         function addProduct(product) {
             if (getProduct(product)) {
                 setCart(cart.map(item => {
@@ -74,6 +78,11 @@ function App() {
             }, 0).toFixed(2);
         }
 
+        function reset() {
+            setCart([]);
+            setModalOpen(false);
+        }
+
         function logState() {
             console.log(cart);
         }
@@ -85,6 +94,7 @@ function App() {
             get: getProduct,
             getCart: getCart,
             getTotalPrice: getTotalPrice,
+            reset: reset,
         }
     }());
 
@@ -94,7 +104,12 @@ function App() {
             <ProductList
             cartActions={cartActions}/>
             <Cart
-            cartActions={cartActions}/>
+            cartActions={cartActions}
+            modalSwitch={modalSwitch}/>
+            {modalOpen && 
+            <ConfirmModal 
+            modalSwitch={modalSwitch}
+            cartActions={cartActions}/>}
         </>
     );
 }

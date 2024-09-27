@@ -3,7 +3,7 @@ import CarbonNeutralIcon from "../assets/images/icon-carbon-neutral.svg?react";
 import EmptyCartIcon from "../assets/images/illustration-empty-cart.svg?react";
 
 
-function CartContent({cartActions, cart}) {
+function CartContent({cartActions, cart, modalSwitch}) {
 
     if (cart.length === 0) {
         return (
@@ -33,7 +33,8 @@ function CartContent({cartActions, cart}) {
                         <CarbonNeutralIcon/>
                         <p>This is a <strong>carbon-neutral</strong> delivery</p>
                     </div>
-                    <button className="order-confirmation">
+                    <button className="order-confirmation"
+                    onClick={modalSwitch}>
                         Confirm Order
                     </button>
                 </div>

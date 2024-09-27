@@ -11,10 +11,16 @@ function ProductItem({cartActions, item}) {
     return (
         <div className="product-item">
             <div className="product-img">
-                <img 
-                src={item.image.desktop} 
-                alt="Product Image" 
-                className={inCartProduct ? "in-cart" : ""}/>
+                <picture> 
+                    <source 
+                        srcSet={item.image.desktop}
+                        media="(min-width: 800px)"
+                    />
+                    <img 
+                        src={item.image.mobile}
+                        alt="Product Image" 
+                        className={inCartProduct ? "in-cart" : ""}/>
+                </picture>
                 <button 
                 className={"add-to-cart" + (inCartProduct ? " in-cart" : "")}
                 onClick={() => !inCartProduct && cartActions.add(item)}>
