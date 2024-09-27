@@ -22,7 +22,7 @@ function ConfirmModal({modalSwitch, cartActions}) {
                     </div>
                     <p className="confirm-order-total">
                         <span>Order Total</span>
-                        <span>$46.50</span>
+                        <span>{"$" + cartActions.getTotalPrice()}</span>
                     </p>
                 </div>
                 <button className="order-confirmation reset"

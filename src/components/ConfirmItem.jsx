@@ -24,7 +24,7 @@ function ConfirmItem({item}) {
                 </div>
             </div>
             <div className="confirm-item-right">
-                <p>$5.50</p>
+                <p>{"$" + (item.price * item.quantity).toFixed(2)}</p>
             </div>
         </div>
     )
